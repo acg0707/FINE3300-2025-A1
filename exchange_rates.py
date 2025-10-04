@@ -13,9 +13,10 @@ class ExchangeRates:
         # Extract the last row (latest exchange rates)
         self.latest = self.data.iloc[-1]
         # Get the USD/CAD exchange rate
-        # Assuming the CSV has a column named "USD/CAD"
+        # Get the column named "USD/CAD"
         self.usd_to_cad = float(self.latest["USD/CAD"])
 
+    # Creating the function to convert USD to CAD and vice-versa; also used docstring to explain function purpose
     def convert(self, amount, from_currency, to_currency):
         """
         Converts between CAD and USD using the latest exchange rate.
