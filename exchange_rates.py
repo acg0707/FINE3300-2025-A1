@@ -37,18 +37,17 @@ class ExchangeRates:
 # ---- Program Execution ----
 if __name__ == "__main__":
     print("---- Currency Exchange Converter ----")
-    
-    # Load exchange rate data
-    converter = ExchangeRates("BankOfCanadaExchangeRates.csv")
 
-    # Prompt user input
+    converter = ExchangeRates()
+
     amount = float(input("Enter amount: "))
     from_curr = input("Convert from (USD or CAD): ")
     to_curr = input("Convert to (USD or CAD): ")
 
-    # Perform conversion
-    try:
+    valid = ["USD", "CAD"]
+
+    if from_curr.upper() not in valid or to_curr.upper() not in valid:
+        print("Error: Only USD and CAD conversions are supported.")
+    else:
         result = converter.convert(amount, from_curr, to_curr)
         print(f"\n{amount:,.2f} {from_curr.upper()} = {result:,.2f} {to_curr.upper()}")
-    except ValueError as e:
-        print(e)
